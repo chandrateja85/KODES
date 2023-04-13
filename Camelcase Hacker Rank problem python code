@@ -1,0 +1,53 @@
+while True:
+    s=""
+    try:
+        l = list(input().rstrip().split(";"))
+        print(l)
+        if l[0] == "S":
+            if l[1] == "V":
+                for i in range(len(l[2])):
+                    if 65 < ord(l[2][i]) < 92:
+                        s += " "
+                        s += chr(ord(l[2][i]) + 32)
+                    else:
+                        s += l[2][i]
+            elif l[1] == "C":
+                for i in range(len(l[2])):
+                    if 65 < ord(l[2][i]) < 92:
+                        s += " "
+                        s += chr(ord(l[2][i]) + 32)
+                    else:
+                        s += l[2][i]
+            elif l[1] == "M":
+                for i in range(len(l[2])):
+                    if 65 < ord(l[2][i]) < 92:
+                        s += " "
+                        s += chr(ord(l[2][i]) + 32)
+                    elif(l[2][i]=="("):
+                        break
+                    else:
+                        s += l[2][i]
+        else:
+            if l[1] == "V":
+                l[2] = l[2].split(" ")
+                s += l[2][0]
+                for i in range(1, len(l[2])):
+                    s += chr(ord(l[2][i][0]) - 32)
+                    s += l[2][i][1:]
+            elif l[1] == "M":
+                l[2] = l[2].split(" ")
+                s += l[2][0]
+                for i in range(1, len(l[2])):
+                    s += chr(ord(l[2][i][0]) - 32)
+                    s += l[2][i][1:]
+                s += "()"
+            elif l[1] == "C":
+                l[2] = l[2].split(" ")
+                s += chr(ord(l[2][0][0]) - 32) + l[2][0][1:]
+                for i in range(1, len(l[2])):
+                    s += chr(ord(l[2][i][0]) - 32)
+                    s += l[2][i][1:]
+        print(s.strip())
+        s=""
+    except EOFError:
+        break
